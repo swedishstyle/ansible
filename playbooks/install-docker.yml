@@ -11,3 +11,8 @@
         name: 
           - docker-compose
         update_cache: yes
+    - name: Add user to Docker group
+      ansible.builtin.user:
+        name: "{{ username }}"
+        groups: docker
+        append: true
