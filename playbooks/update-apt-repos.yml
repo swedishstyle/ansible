@@ -27,3 +27,15 @@
           Content-Type: application/json
         status_code: 204
       when: reboot_required.stat.exists
+
+    # Test Discord message when reboot is not required
+    - name: Send Test Discord message
+      uri:
+        url: "{{ discord_webhook_url }}"
+        method: POST
+        body_format: json
+        body: '{"content": "Reboot not required on linux"}'
+        headers:
+          Content-Type: application/json
+        status_code: 204
+      when: reboot_required.stat.exists == False
