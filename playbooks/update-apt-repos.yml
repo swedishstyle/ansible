@@ -3,14 +3,14 @@
   become: yes
   tasks:
     # Upgrade packages
-    - name: upgrade apt packages
+    - name: Upgrade apt packages
       become: true
       apt:
         upgrade: yes
         update_cache: yes
 
     # Check if reboot is required
-    - name: check if system reboot is required
+    - name: Check if system reboot is required
       become: true
       stat:
         path: /var/run/reboot-required
@@ -22,7 +22,7 @@
         url: "{{ discord_webhook_url }}"
         method: POST
         body_format: json
-        body: '{"content": "Reboot required on {{ inventory_hostname }}"}'
+        body: '{"content": "Reboot required on linux"}'
         headers:
           Content-Type: application/json
         status_code: 204
